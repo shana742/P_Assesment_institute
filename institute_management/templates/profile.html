@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style type="text/css">
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    max-width: 600px;
+    width: 90%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+img {
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   
+}
+
+.main_btn {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.main_btn:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+            
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="fname">First Name:</label>
+        <input class="form-control" type="text" name="fname" value="{{ user.first_name }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="lname">Last Name:</label>
+        <input class="form-control" type="text" name="lname" value="{{ user.last_name }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input class="form-control" type="email" name="email" value="{{ user.email }}" required>
+    </div>
+        <div class="form-group">
+               <label for="email">Mobile:</label>
+                <input class="form-control" name="mobile" value="{{ user.mobile }}" required>
+            </div>
+
+    <div class="form-group">
+        <label for="profile_picture">Profile Picture:</label>
+        <input class="form-control" type="file" name="profile_picture">
+        <img src="{{ user.profile.profile_pictures.url }}" alt="Profile Picture" width="50" height="50" >
+    </div>
+
+    <button type="submit" class="main_btn">Update Profile</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts Instittue</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: hotpink;
+            color: white;
+            border-radius: 0px;
+        }
+
+        /* Header Section */
+        .head{
+            background-color: skyblue;
+            margin-top: -20px;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        /* Dropdown Select */
+        .custom-select {
+            width: 150px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 7px;
+            border: none;
+            color: white;
+            background-color: hotpink;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            /* padding-top: 60px; */
+            margin-top: 11%;
+            height: 90%;
+        
+        }
+
+        .sidebar .header {
+            background-color: hotpink;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            height: 50px;
+            
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .sidebar ul li .icon {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .sidebar ul li .count {
+            background-color: #e5e5e5;
+            padding: 5px 10px;
+            border-radius: 50%;
+            font-size: 14px;
+        }
+
+        .sidebar ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            background-color: #d90429;
+            color: white;
+            text-align: left;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .dashboard-glance {
+            display: flex;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .glance-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .glance-item i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .glance-item p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .glance-item span {
+            display: block;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .content-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .content-section .large-card {
+            flex: 3;
+            background-image: url('https://via.placeholder.com/600x300');
+            /* Replace this with your actual image URL */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .large-card .event-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(217, 4, 41, 0.9);
+            color: white;
+            padding: 15px;
+            width: 100%;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .small-card {
+            flex: 1;
+            margin-left: 10px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .small-card.yellow {
+            background-color: #fcca03;
+            color: #333;
+        }
+
+        .small-card.grey {
+            background-color: #8a8d8f;
+            color: #fff;
+        }
+
+        .small-card.red {
+            background-color: #d90429;
+            color: #fff;
+            position: relative;
+        }
+
+        .small-card.red span {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            color: #d90429;
+            padding: 5px 10px;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Wizard</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#">Stuff</a></li>
+                <li><a href="#">Board</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+
+              {% if request.session.email %}
+                <li>
+        <a href="{% url 'profile' %}">
+            <img src="{{ request.session.profile_picture }}" alt="Profile Picture" style="width: 30px; height: 30px; border-radius: 50%;">
+              {{ request.session.fname }}
+        </a>
+    </li>
+               
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+              {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'singup' %}">Signup</a></li>
+              {% endif %}
+
+
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="head">
+        <h3>Dashboard Management System</h3>
+        <div>
+            <select class="custom-select">
+                <option selected>Select Action</option>
+                <option value="1">Action 1</option>
+                <option value="2">Action 2</option>
+                <option value="3">Action 3</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="header">⚙️ Dashboard</div>
+        <ul>
+            <li><span><i class="icon">🎓</i> Student</span><span class="count">100</span></li>
+            <li><span><i class="icon">👩‍🏫</i> Teacher</span><span class="count">20</span></li>
+            <li><span><i class="icon">🏛️</i> Department</span><span class="count">30</span></li>
+            <li><span><i class="icon">🏢</i> Campus</span><span class="count">20</span></li>
+            <li><span><i class="icon">🎯</i> Clubs</span><span class="count">20</span></li>
+            <li><span><i class="icon">👨‍👩‍👧</i> Parents</span><span class="count">20</span></li>
+            <li><span><i class="icon">📚</i> Library</span><span class="count">20</span></li>
+            <li><span><i class="icon">📅</i> Routine</span><span class="count">20</span></li>
+            <li><span><i class="icon">📆</i> Events</span><span class="count">20</span></li>
+        </ul>
+    </div> 
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">DPI Dashboard At A Glance</div>
+
+        <!-- Dashboard Glance Section -->
+
+
+                                       <div class="dashboard-glance">
+        <div class="glance-item">
+            <i class="glyphicon glyphicon-education"></i>
+            <p>Students</p>
+            <span>{{ student_count }}</span>
+        </div>
+        <div class="glance-item">
+            <i class="glyphicon glyphicon-blackboard"></i>
+            <p>Teachers</p>
+            <span>{{ teacher_count }}</span>
+        </div>
+        <div class="glance-item">
+            <i class="glyphicon glyphicon-tower"></i>
+            <p>Clubs</p>
+            <span>{{ club_count }}</span>
+        </div>
+        <div class="glance-item">
+            <i class="glyphicon glyphicon-home"></i>
+            <p>Books</p>
+            <span>{{ book_count }}</span>
+        </div>
+    </div>
+
+
+
+
+
+        <!-- Content Section -->
+        <div class="content-section">
+            <div class="large-card">
+                <div class="event-info">
+                    Event Name
+                </div>
+            </div>
+            <div class="small-card yellow">
+                Exam
+            </div>
+            <div class="small-card grey">
+                Department Meeting
+            </div>
+            <div class="small-card red">
+                Notice
+                <span>4</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+</html>
